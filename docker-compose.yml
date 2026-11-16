@@ -1,0 +1,42 @@
+services:
+  gonic:
+    image: sentriz/gonic:latest
+    container_name: gonic
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Moscow
+    ports:
+      - "4747:80"
+    volumes:
+      - ./gonic/data:/data
+      - /mnt/hdd/media/music:/music:ro
+      - ./gonic/podcasts:/podcasts
+      - ./gonic/playlists:/playlists
+
+  slskd:
+    image: slskd/slskd:latest
+    container_name: slskd
+    restart: unless-stopped
+    environment:
+      - SLSKD_REMOTE_CONFIGURATION=true
+    ports:
+      - "5030:5030"
+      - "5031:5031"
+      - "50300:50300"
+    volumes:
+      - ./slskd:/app
+      - /mnt/hdd/downloads:/downloads
+      - /mnt/hdd/media/music:/music:ro
+
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Moscow
+    ports:
+      - "8096:8096"
+    volumes:
+      - ./jellyfin/config:/config
+      - ./jellyfin/cache:/cache
+      - /mnt/hdd/media:/media:ro
