@@ -1,5 +1,7 @@
 # Гайд: Debian Linux на TV-приставке X96 Max Plus + домашний сервер
 
+<img width="400" height="403" alt="mybox" src="https://github.com/user-attachments/assets/9d61c11e-8ac4-4938-9f75-71f9174e2930" />
+
 > Превращаем Amlogic-приставку в минималистичный сервер на Debian: SMB-шаринг HDD, Docker и медиасервисы (gonic, slskd, jellyfin).
 
 **Источник образа:** https://github.com/devmfc/debian-on-amlogic
